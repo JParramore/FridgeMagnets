@@ -1,4 +1,4 @@
-## Fridge Magnets
+## FridgeMagnets
 
 A fridge to spell rude words on when you have family at home.
 
