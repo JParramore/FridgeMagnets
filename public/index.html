@@ -1,0 +1,30 @@
+
+
+
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fridge Magnets</title>
+
+  <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+<div id="fridge">
+    <button type="button" id="new-magnet-button" onclick="addMagnet()" style="background-color:#f14e4e">Add Magnet</button>
+    <button type="button" id="drop-magnets-button" onclick="dropMagnets()" style="background-color:#cacaca">Drop Magnets</button>
+<!-- 
+    <img src="magnets\j.gif" alt="drag-and-drop image script" 
+    title="drag-and-drop image script" class="draggable">
+    <img src="magnets\p.gif" alt="drag-and-drop image script" 
+    title="drag-and-drop image script" class="draggable"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
+    <script src="client.js"></script>
+</div>
+</body>
+</html>
