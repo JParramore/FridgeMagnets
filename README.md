@@ -1,6 +1,6 @@
 ## FridgeMagnets
 
-A fridge to spell rude words on when you have family at home.
+Move your letters around a fridge and spell out anything you like.
 
 <br>
 
