@@ -1,14 +1,11 @@
 var uuid = window.uuid
 var socket;
-socket = io.connect(document.location.host)
 console.log('client connected')
-
 const buttonColours = ["#f14e4e","#f1bb4e","#84f14e","#4ef18f","#4e9af1","#9a4ef1","#f14ebd"]
 var currentColour = 0
 
 window.onload = function () {
     socket = io.connect(document.location.host)
-
     socket.on('build', function(fridge){
         
         // if dropped magnets
@@ -41,7 +38,7 @@ window.onload = function () {
 
     // someone added a magnet
     socket.on('new', function (data) {
-        console.log(data)
+
         var magnet = document.createElement("img");
 
         magnet.src = `images/${data.char}.png`;
@@ -82,7 +79,6 @@ function startDrag(e) {
 function dragLetter(e) {
 
     if (!drag) { return };
-
 
     // move div element
     targ.style.left = coordX + e.clientX - offsetX + 'px';
