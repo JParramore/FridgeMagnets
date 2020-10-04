@@ -1,13 +1,13 @@
 var uuid = window.uuid
 var socket;
-socket = io.connect(document.location.hostname)
+socket = io.connect(document.location.host)
 console.log('client connected')
 
 const buttonColours = ["#f14e4e","#f1bb4e","#84f14e","#4ef18f","#4e9af1","#9a4ef1","#f14ebd"]
 var currentColour = 0
 
 window.onload = function () {
-    socket = io.connect(document.location.hostname)
+    socket = io.connect(document.location.host)
 
     socket.on('build', function(fridge){
         
