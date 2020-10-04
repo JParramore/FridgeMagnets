@@ -20,7 +20,7 @@ window.onload = function () {
         for (const [id, data] of Object.entries(fridge)) {
             
             var magnet = document.createElement("img");
-            magnet.src = `magnets/${data.char}.png`;
+            magnet.src = `images/${data.char}.png`;
             magnet.className = "draggable"
             magnet.id = id
             magnet.style.left = data.x
@@ -44,7 +44,7 @@ window.onload = function () {
         console.log(data)
         var magnet = document.createElement("img");
 
-        magnet.src = `magnets/${data.char}.png`;
+        magnet.src = `images/${data.char}.png`;
         magnet.className = "draggable"
         magnet.style.left = data.x
         magnet.style.top = data.y
@@ -117,7 +117,7 @@ function addMagnet() {
     const char = String.fromCharCode(97 + Math.floor(Math.random() * 26))
 
     // load that letter
-    magnet.src = `magnets/${char}.png`; 
+    magnet.src = `images/${char}.png`; 
     magnet.className = "draggable";
     
     // give it an id
