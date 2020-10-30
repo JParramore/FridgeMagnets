@@ -1,10 +1,10 @@
 ## FridgeMagnets
 
-Move your letters around a fridge and spell out anything you like.
+A multiplayer virtual fridge magnet sandbox! Move your letters around a fridge and spell out anything you like.
 
 <br>
 
-- Connect to the fridge and attempt to write something interesting before you're sabotaged.
+- Connect and attempt to write something before you're sabotaged.
 
 <br>
 
