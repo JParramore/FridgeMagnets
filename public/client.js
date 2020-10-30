@@ -1,8 +1,8 @@
-let uuid = window.uuid
+let uuid = window.uuid;
 let socket;
-console.log('client connected')
-const buttonColours = ["#f14e4e","#f1bb4e","#84f14e","#4ef18f","#4e9af1","#9a4ef1","#f14ebd"]
-let currentColour = 0
+console.log('client connected');
+const buttonColours = ["#f14e4e","#f1bb4e","#84f14e","#4ef18f","#4e9af1","#9a4ef1","#f14ebd"];
+let currentColour = 0;
 
 window.onload = function () {
     socket = io.connect(document.location.host)
@@ -18,10 +18,10 @@ window.onload = function () {
             
             let magnet = document.createElement("img");
             magnet.src = `images/${data.char}.png`;
-            magnet.className = "draggable"
-            magnet.id = id
-            magnet.style.left = data.x
-            magnet.style.top = data.y
+            magnet.className = "draggable";
+            magnet.id = id;
+            magnet.style.left = data.x;
+            magnet.style.top = data.y;
 
             document.body.appendChild(magnet);
           }
@@ -33,7 +33,7 @@ window.onload = function () {
         let magnet = document.getElementById(data.id);
 
         magnet.style.left = data.x;
-        magnet.style.top = data.y
+        magnet.style.top = data.y;
     })
 
     // someone added a magnet
@@ -42,11 +42,11 @@ window.onload = function () {
         let magnet = document.createElement("img");
 
         magnet.src = `images/${data.char}.png`;
-        magnet.className = "draggable"
-        magnet.style.left = data.x
-        magnet.style.top = data.y
+        magnet.className = "draggable";
+        magnet.style.left = data.x;
+        magnet.style.top = data.y;
 
-        magnet.id = data.id
+        magnet.id = data.id;
         document.body.appendChild(magnet);
     })
 
@@ -89,7 +89,7 @@ function dragLetter(e) {
         id: targ.id,
         x: targ.style.left,
         y: targ.style.top
-    }
+    };
     if(data.id){
         socket.emit('move', data);
     }
@@ -104,13 +104,13 @@ function stopDrag() {
 function addMagnet() {
     // change button colour
     currentColour++;
-    document.getElementById('new-magnet-button').style.backgroundColor = buttonColours[currentColour % buttonColours.length]
+    document.getElementById('new-magnet-button').style.backgroundColor = buttonColours[currentColour % buttonColours.length];
     
     // new magnet element
     let magnet = document.createElement("img");
 
      // get a random letter
-    const char = String.fromCharCode(97 + Math.floor(Math.random() * 26))
+    const char = String.fromCharCode(97 + Math.floor(Math.random() * 26));
 
     // load that letter
     magnet.src = `images/${char}.png`; 
@@ -118,7 +118,7 @@ function addMagnet() {
     
     // give it an id
     const id = uuid.v4();
-    magnet.id = id
+    magnet.id = id;
 
     // put it somewhere
     const x = Math.floor(Math.random() * 1000) + 1;
@@ -134,13 +134,13 @@ function addMagnet() {
         char: char,
         x: magnet.style.left,
         y: magnet.style.top
-    }
+    };
 
 
     socket.emit('new', data);
 }
 
 function dropMagnets() {
-    socket.emit('drop')
+    socket.emit('drop');
 }
 
