@@ -5,12 +5,12 @@ let server = app.listen(3000);
 
 app.use(express.static('public'));
 
-let socket = require('socket.io')
+let socket = require('socket.io');
 let io = socket(server);
 
 io.sockets.on('connection', newConnection);
 
-let fridge = {}
+let fridge = {};
 
 function newConnection(socket) {
     console.log("new conncetion: " + socket.id);
@@ -27,7 +27,7 @@ function newConnection(socket) {
         
         // too many magnets, kill it
         if(Object.keys(fridge).length > 500){
-            fridge = {}
+            fridge = {};
             io.emit('build', fridge);
         }
 
