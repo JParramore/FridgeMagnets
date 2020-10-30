@@ -1,21 +1,21 @@
 let uuid = window.uuid;
 let socket;
 console.log('client connected');
-const buttonColours = ["#f14e4e","#f1bb4e","#84f14e","#4ef18f","#4e9af1","#9a4ef1","#f14ebd"];
+const buttonColours = ["#f14e4e", "#f1bb4e", "#84f14e", "#4ef18f", "#4e9af1", "#9a4ef1", "#f14ebd"];
 let currentColour = 0;
 
 window.onload = function () {
     socket = io.connect(document.location.host)
-    socket.on('build', function(fridge){
-        
+    socket.on('build', function (fridge) {
+
         // if dropped magnets
-        if(Object.keys(fridge).length === 0){
+        if (Object.keys(fridge).length === 0) {
             document.querySelectorAll('.draggable').forEach(e => e.remove());
         }
 
         // add other client's magnets
         for (const [id, data] of Object.entries(fridge)) {
-            
+
             let magnet = document.createElement("img");
             magnet.src = `images/${data.char}.png`;
             magnet.className = "draggable";
@@ -24,7 +24,7 @@ window.onload = function () {
             magnet.style.top = data.y;
 
             document.body.appendChild(magnet);
-          }
+        }
 
     })
 
@@ -52,7 +52,7 @@ window.onload = function () {
 
     document.onmousedown = startDrag;
     document.onmouseup = stopDrag;
-    
+
 }
 
 function startDrag(e) {
@@ -90,7 +90,7 @@ function dragLetter(e) {
         x: targ.style.left,
         y: targ.style.top
     };
-    if(data.id){
+    if (data.id) {
         socket.emit('move', data);
     }
 
@@ -105,17 +105,17 @@ function addMagnet() {
     // change button colour
     currentColour++;
     document.getElementById('new-magnet-button').style.backgroundColor = buttonColours[currentColour % buttonColours.length];
-    
+
     // new magnet element
     let magnet = document.createElement("img");
 
-     // get a random letter
+    // get a random letter
     const char = String.fromCharCode(97 + Math.floor(Math.random() * 26));
 
     // load that letter
-    magnet.src = `images/${char}.png`; 
+    magnet.src = `images/${char}.png`;
     magnet.className = "draggable";
-    
+
     // give it an id
     const id = uuid.v4();
     magnet.id = id;

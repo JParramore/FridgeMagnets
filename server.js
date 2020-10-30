@@ -24,9 +24,9 @@ function newConnection(socket) {
     })
 
     socket.on('new', function (data) {
-        
+
         // too many magnets, kill it
-        if(Object.keys(fridge).length > 500){
+        if (Object.keys(fridge).length > 500) {
             fridge = {};
             io.emit('build', fridge);
         }
