@@ -1,8 +1,8 @@
-var uuid = window.uuid
-var socket;
+let uuid = window.uuid
+let socket;
 console.log('client connected')
 const buttonColours = ["#f14e4e","#f1bb4e","#84f14e","#4ef18f","#4e9af1","#9a4ef1","#f14ebd"]
-var currentColour = 0
+let currentColour = 0
 
 window.onload = function () {
     socket = io.connect(document.location.host)
@@ -16,7 +16,7 @@ window.onload = function () {
         // add other client's magnets
         for (const [id, data] of Object.entries(fridge)) {
             
-            var magnet = document.createElement("img");
+            let magnet = document.createElement("img");
             magnet.src = `images/${data.char}.png`;
             magnet.className = "draggable"
             magnet.id = id
@@ -30,7 +30,7 @@ window.onload = function () {
 
     // someones moving something
     socket.on('move', function (data) {
-        var magnet = document.getElementById(data.id);
+        let magnet = document.getElementById(data.id);
 
         magnet.style.left = data.x;
         magnet.style.top = data.y
@@ -39,7 +39,7 @@ window.onload = function () {
     // someone added a magnet
     socket.on('new', function (data) {
 
-        var magnet = document.createElement("img");
+        let magnet = document.createElement("img");
 
         magnet.src = `images/${data.char}.png`;
         magnet.className = "draggable"
@@ -85,7 +85,7 @@ function dragLetter(e) {
     targ.style.top = coordY + e.clientY - offsetY + 'px';
 
     // package magnet
-    var data = {
+    let data = {
         id: targ.id,
         x: targ.style.left,
         y: targ.style.top
@@ -107,7 +107,7 @@ function addMagnet() {
     document.getElementById('new-magnet-button').style.backgroundColor = buttonColours[currentColour % buttonColours.length]
     
     // new magnet element
-    var magnet = document.createElement("img");
+    let magnet = document.createElement("img");
 
      // get a random letter
     const char = String.fromCharCode(97 + Math.floor(Math.random() * 26))
@@ -129,7 +129,7 @@ function addMagnet() {
     document.body.appendChild(magnet);
 
     // package magnet
-    var data = {
+    let data = {
         id: magnet.id,
         char: char,
         x: magnet.style.left,
